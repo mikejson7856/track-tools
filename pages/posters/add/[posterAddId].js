@@ -46,7 +46,7 @@ function PosterAddPage() {
   };
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     console.log(formData, process.env.NEXT_PUBLIC_API_URL);
     
     try {
