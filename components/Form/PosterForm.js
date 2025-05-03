@@ -51,7 +51,7 @@ function PosterForm({ id, adminId }) {
       .matches(/^[a-zA-Z0-9@]+$/, "Cannot contain space and special character"),
     verifyId: Yup.string()
       .required("Verify Id is required")
-      .max(3, "Not More than 4 characters")
+      .max(3, "Not More than 3 characters")
       .matches(/^[a-zA-Z0-9@]+$/, "Cannot contain space and special character"),
 
     links: Yup.array().min(1, "Atleast one link is required"),

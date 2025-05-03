@@ -34,7 +34,7 @@ function PosterAddPage() {
     setShowModal(true);
   };
   const [formData, setFormData] = useState({
-    link: selectedLink,
+    site: selectedLink,
     name: "",
     amount: "",
     cashTag: "",
@@ -154,7 +154,7 @@ function PosterAddPage() {
         <div className="mt-6 flex flex-col justify-center items-center gap-3">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold">Link</label>
+              <label className="block text-sm font-semibold">Site</label>
               <p className="w-full border px-3 py-2 rounded">{selectedLink}</p>
               {/* <input
                 type="text"
