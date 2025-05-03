@@ -203,8 +203,7 @@ function PosterAddPage() {
                 required
               />
             </div>
-          </form>
-          <div className="flex items-center gap-5">
+            <div className="flex items-center gap-5">
             <button
               className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
               onClick={() => setShowModal(false)}
@@ -214,14 +213,13 @@ function PosterAddPage() {
             <button
               className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
               type="submit"
-              // onClick={() => {
-              //   console.log("Add confirmed:", selectedLink);
-              //   setShowModal(false);
-              // }}
+           
             >
               Confirm
             </button>
           </div>
+          </form>
+          
         </div>
       </Modal>
     </div>
