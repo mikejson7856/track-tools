@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { FaUser } from "react-icons/fa";
 import Table from "../../../components/Table";
@@ -8,12 +9,15 @@ import Modal from "../../../components/Modal";
 import { useState } from "react";
 
 function PosterAddPage() {
+  const { data: session } = useSession();
+  const { id, admin, adminId } = session ? session.user : "";
+
   const { back, query } = useRouter();
   const { posterAddId } = query;
   const { data, isLoading } = useGetData(`/posters/details/${posterAddId}`);
   const [showModal, setShowModal] = useState(false);
   const [selectedLink, setSelectedLink] = useState("");
-  // console.log("poster collection", data?.data?.data);
+  console.log("poster adminId", adminId, posterAddId, posterId);
 
   // const { username, password, posterId, links, details } = data
   //   ? data?.data?.data
@@ -45,7 +49,7 @@ function PosterAddPage() {
     e.preventDefault();
     try {
       // Send the POST request (optional if handled in parent)
-      const res = await fetch(`/api/add-link`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add/cashapp/name/${adminId}/${posterId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -109,15 +113,15 @@ function PosterAddPage() {
                         </button>
                         <button
                           className="bg-slate-600 text-xs text-white font-semibold px-2 py-1 rounded"
-                        //   onClick={() => handleAddClick(link)}
+                          //   onClick={() => handleAddClick(link)}
                         >
-                          Add
+                          EDIT
                         </button>
                         <button
                           className="bg-red-600 text-xs text-white font-semibold px-2 py-1 rounded"
-                        //   onClick={() => handleAddClick(link)}
+                          //   onClick={() => handleAddClick(link)}
                         >
-                          Add
+                          DELETE
                         </button>
                       </div>
                     ))}
@@ -149,9 +153,7 @@ function PosterAddPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-semibold">Link</label>
-              <p className="w-full border px-3 py-2 rounded">
-              {selectedLink}
-              </p>
+              <p className="w-full border px-3 py-2 rounded">{selectedLink}</p>
               {/* <input
                 type="text"
                 name="link"
@@ -198,23 +200,23 @@ function PosterAddPage() {
               />
             </div>
           </form>
-          <div className="gap-5">
-          <button
-            className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-            onClick={() => setShowModal(false)}
-          >
-            Cancel
-          </button>
-          <button
-            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-            type="submit"
-            // onClick={() => {
-            //   console.log("Add confirmed:", selectedLink);
-            //   setShowModal(false);
-            // }}
-          >
-            Confirm
-          </button>
+          <div className="flex items-center gap-5">
+            <button
+              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+              onClick={() => setShowModal(false)}
+            >
+              Cancel
+            </button>
+            <button
+              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+              type="submit"
+              // onClick={() => {
+              //   console.log("Add confirmed:", selectedLink);
+              //   setShowModal(false);
+              // }}
+            >
+              Confirm
+            </button>
           </div>
         </div>
       </Modal>
