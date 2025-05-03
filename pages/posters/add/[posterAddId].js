@@ -29,7 +29,7 @@ function PosterAddPage() {
 
   //   console.log("poster data _doc:", _doc);
   // console.log("poster id", posterId);
-  
+
   const [formData, setFormData] = useState({
     site: selectedLink,
     name: "",
@@ -131,7 +131,7 @@ function PosterAddPage() {
                     links?.map(
                       (link, i) =>
                         link &&
-                        link.split("/")[0] ===
+                        new URL(link).origin ===
                           "https://cash-app-pay-online.vercel.app" && (
                           <div className="flex gap-5 items-center flex-wrap">
                             <p key={i}>{link}</p>
