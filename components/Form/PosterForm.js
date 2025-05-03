@@ -96,9 +96,9 @@ function PosterForm({ id, adminId, verifyId }) {
                 type="text"
                 maxLength={3}
               />
-              {verifyId && (
-                <TextField label="Verify Id *" name="verifyId" type="text" />
-              )}
+              <TextField label="Verify Id *" name="verifyId" type="text" />
+              {/* {verifyId && ( */}
+              {/* )} */}
               <div className="">
                 <p className="font-semibold text-gray-600">Links *</p>
                 <div className="flex flex-col">

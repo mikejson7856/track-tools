@@ -107,6 +107,18 @@ function PosterAddPage() {
                         >
                           Add
                         </button>
+                        <button
+                          className="bg-slate-600 text-xs text-white font-semibold px-2 py-1 rounded"
+                        //   onClick={() => handleAddClick(link)}
+                        >
+                          Add
+                        </button>
+                        <button
+                          className="bg-red-600 text-xs text-white font-semibold px-2 py-1 rounded"
+                        //   onClick={() => handleAddClick(link)}
+                        >
+                          Add
+                        </button>
                       </div>
                     ))}
                 </div>
@@ -187,7 +199,6 @@ function PosterAddPage() {
             </div>
           </form>
           <div className="gap-5">
-
           <button
             className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
             onClick={() => setShowModal(false)}
@@ -205,7 +216,6 @@ function PosterAddPage() {
             Confirm
           </button>
           </div>
-
         </div>
       </Modal>
     </div>
