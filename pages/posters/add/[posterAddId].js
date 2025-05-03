@@ -25,7 +25,7 @@ function PosterAddPage() {
   const { _doc, details } = data ? data?.data?.data : "";
 
   const { username, password, posterId, links } = _doc ? _doc : "";
-  console.log("adminId", adminId, 'posterAddId', posterAddId, 'posterId', posterId);
+//   console.log("adminId", adminId, 'posterAddId', posterAddId, 'posterId', posterId);
 
 //   console.log("poster data _doc:", _doc);
   // console.log("poster id", posterId);
@@ -46,14 +46,16 @@ function PosterAddPage() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    console.log(formData, process.env.NEXT_PUBLIC_API_URL);
+    
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/add/cashapp/name/${adminId}/${posterId}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
+          body: formData,
         }
       );
 
