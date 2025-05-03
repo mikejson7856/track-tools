@@ -9,8 +9,8 @@ import { useRouter } from "next/router";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
-function PosterForm({ id, adminId, verifyId }) {
-  console.log('verify Id', verifyId);
+function PosterForm({ id, adminId }) {
+  // console.log('verify Id', verifyId);
   // const { data: session } = useSession();
   // const { id, username, admin, adminId } = session ? session.user : "";
 
@@ -49,6 +49,11 @@ function PosterForm({ id, adminId, verifyId }) {
       .required("Poster Id is required")
       .max(3, "Not More than 3 characters")
       .matches(/^[a-zA-Z0-9@]+$/, "Cannot contain space and special character"),
+    verifyId: Yup.string()
+      .required("Verify Id is required")
+      .max(3, "Not More than 4 characters")
+      .matches(/^[a-zA-Z0-9@]+$/, "Cannot contain space and special character"),
+
     links: Yup.array().min(1, "Atleast one link is required"),
   });
 
@@ -58,6 +63,8 @@ function PosterForm({ id, adminId, verifyId }) {
 
   const handleSubmit = (values, formik) => {
     const { username, password, posterId, verifyId, links } = values;
+    console.log("form value", username, password, posterId, verifyId, links);
+
     const submitvalues = {
       id: id,
       username: username,
@@ -66,7 +73,6 @@ function PosterForm({ id, adminId, verifyId }) {
       verifyId: verifyId,
       links: links,
     };
-
 
     if (submitvalues.links.length === 0) {
       setLinksError(true);
@@ -105,8 +111,9 @@ function PosterForm({ id, adminId, verifyId }) {
                   {formik.values.posterId ? (
                     <div className="relative">
                       <div className="mt-2 grid grid-cols-1 gap-x-10 divide-y-2 w-full border border-gray-200 overflow-hidden">
-                        {verifyId
-                          ? fetchedLinks?.map((link, i) => (
+                        {/* {verifyId
+                          ?  */}
+                          {fetchedLinks?.map((link, i) => (
                               <CheckboxField
                                 key={i}
                                 name="links"
@@ -118,8 +125,8 @@ function PosterForm({ id, adminId, verifyId }) {
                                 value={`${link}/${adminId}/${formik.values.posterId}/${formik.values.verifyId}`}
                                 resetonchange="true"
                               />
-                            ))
-                          : fetchedLinks?.map((link, i) => (
+                            ))}
+                          {/* : fetchedLinks?.map((link, i) => (
                               <CheckboxField
                                 key={i}
                                 name="links"
@@ -131,7 +138,7 @@ function PosterForm({ id, adminId, verifyId }) {
                                 value={`${link}/${adminId}/${formik.values.posterId}`}
                                 resetonchange="true"
                               />
-                            ))}
+                            ))} */}
                       </div>
                       {linksError ? (
                         <p className="absolute -bottom-5 text-red-600 text-xs font-semibold">
