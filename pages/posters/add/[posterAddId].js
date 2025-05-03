@@ -29,12 +29,14 @@ function PosterAddPage() {
 
   //   console.log("poster data _doc:", _doc);
   // console.log("poster id", posterId);
+  
   const [formData, setFormData] = useState({
     site: selectedLink,
     name: "",
     amount: "",
     cashTag: "",
   });
+
   const handleAddClick = (link) => {
     setSelectedLink(link);
     setFormData((prev) => ({
@@ -85,6 +87,8 @@ function PosterAddPage() {
     }
   };
 
+  console.log("links", links);
+
   return (
     <div className="relative">
       <div className="flex items-center gap-3">
@@ -126,7 +130,7 @@ function PosterAddPage() {
                   {links &&
                     links?.map(
                       (link, i) =>
-                        link && 
+                        link &&
                         link.split("/")[0] ===
                           "https://cash-app-pay-online.vercel.app" && (
                           <div className="flex gap-5 items-center flex-wrap">
