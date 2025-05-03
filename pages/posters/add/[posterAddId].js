@@ -47,15 +47,15 @@ function PosterAddPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData, process.env.NEXT_PUBLIC_API_URL);
+    console.log(formData);
     
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/add/cashapp/name/${adminId}/${posterId}`,
+        `https://mailhackbackend.vercel.app/add/cashapp/name/${adminId}/${posterId}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: formData,
+          body: JSON.stringify(formData),
         }
       );
 
