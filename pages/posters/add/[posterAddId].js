@@ -68,7 +68,18 @@ function PosterAddPage() {
 
       const result = await res.json();
       console.log("Response:", result);
-      //   onSubmit?.(result); // call parent handler if provided
+      if (res.ok) {
+        setFormData({
+          site: "",
+          name: "",
+          amount: "",
+          cashTag: "",
+        });
+        setSelectedLink("");
+        setShowModal(false);
+      } else {
+        console.error("Submission failed:", result);
+      }
     } catch (err) {
       console.log("Error submitting form:", err);
     }
