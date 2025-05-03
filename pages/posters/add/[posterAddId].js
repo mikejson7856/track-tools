@@ -25,20 +25,24 @@ function PosterAddPage() {
   const { _doc, details } = data ? data?.data?.data : "";
 
   const { username, password, posterId, links } = _doc ? _doc : "";
-//   console.log("adminId", adminId, 'posterAddId', posterAddId, 'posterId', posterId);
+  //   console.log("adminId", adminId, 'posterAddId', posterAddId, 'posterId', posterId);
 
-//   console.log("poster data _doc:", _doc);
+  //   console.log("poster data _doc:", _doc);
   // console.log("poster id", posterId);
-  const handleAddClick = (link) => {
-    setSelectedLink(link);
-    setShowModal(true);
-  };
   const [formData, setFormData] = useState({
     site: selectedLink,
     name: "",
     amount: "",
     cashTag: "",
   });
+  const handleAddClick = (link) => {
+    setSelectedLink(link);
+    setFormData((prev) => ({
+      ...prev,
+      site: link,
+    }));
+    setShowModal(true);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,14 +52,17 @@ function PosterAddPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
-    
+
     try {
       const res = await fetch(
         `https://mailhackbackend.vercel.app/add/cashapp/name/${adminId}/${posterId}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            ...formData,
+            site: selectedLink,
+          }),
         }
       );
 
@@ -204,22 +211,20 @@ function PosterAddPage() {
               />
             </div>
             <div className="flex items-center gap-5">
-            <button
-              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-              onClick={() => setShowModal(false)}
-            >
-              Cancel
-            </button>
-            <button
-              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-              type="submit"
-           
-            >
-              Confirm
-            </button>
-          </div>
+              <button
+                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                onClick={() => setShowModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                type="submit"
+              >
+                Confirm
+              </button>
+            </div>
           </form>
-          
         </div>
       </Modal>
     </div>
