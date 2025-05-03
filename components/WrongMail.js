@@ -7,7 +7,7 @@ function WrongMail({ id }) {
     const values = {
       id,
     };
-    const url = `${API_URL}//email/post/wrong`;
+    const url = `${API_URL}/email/post/wrong`;
 
     const res = await fetch(url, {
       method: "POST",
