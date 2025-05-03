@@ -17,15 +17,15 @@ function PosterAddPage() {
   const { data, isLoading } = useGetData(`/posters/details/${posterAddId}`);
   const [showModal, setShowModal] = useState(false);
   const [selectedLink, setSelectedLink] = useState("");
-  console.log("poster adminId", adminId, posterAddId, posterId);
-
+  
   // const { username, password, posterId, links, details } = data
   //   ? data?.data?.data
   //   : "";
 
   const { _doc, details } = data ? data?.data?.data : "";
-
+  
   const { username, password, posterId, links } = _doc ? _doc : "";
+  console.log("poster adminId", adminId, posterAddId, posterId);
 
   console.log("poster data _doc:", _doc);
   // console.log("poster id", posterId);
