@@ -10,7 +10,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
 function PosterForm({ id, adminId, verifyId }) {
-  console.log(verifyId);
+  console.log('verify Id', verifyId);
   // const { data: session } = useSession();
   // const { id, username, admin, adminId } = session ? session.user : "";
 
@@ -66,6 +66,7 @@ function PosterForm({ id, adminId, verifyId }) {
       verifyId: verifyId,
       links: links,
     };
+
 
     if (submitvalues.links.length === 0) {
       setLinksError(true);

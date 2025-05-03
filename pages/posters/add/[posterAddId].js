@@ -30,7 +30,7 @@ function PosterAddPage() {
     setShowModal(true);
   };
   const [formData, setFormData] = useState({
-    link: "",
+    link: selectedLink,
     name: "",
     amount: "",
     cashTag: "",
@@ -45,7 +45,7 @@ function PosterAddPage() {
     e.preventDefault();
     try {
       // Send the POST request (optional if handled in parent)
-      const res = await fetch("/api/add-link", {
+      const res = await fetch(`/api/add-link`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -137,14 +137,17 @@ function PosterAddPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-semibold">Link</label>
-              <input
+              <p className="w-full border px-3 py-2 rounded">
+              {selectedLink}
+              </p>
+              {/* <input
                 type="text"
                 name="link"
                 value={formData.link}
                 onChange={handleChange}
                 className="w-full border px-3 py-2 rounded"
                 required
-              />
+              /> */}
             </div>
 
             <div>
@@ -162,7 +165,7 @@ function PosterAddPage() {
             <div>
               <label className="block text-sm font-semibold">Amount ($)</label>
               <input
-                type="number"
+                type="text"
                 name="amount"
                 value={formData.amount}
                 onChange={handleChange}
@@ -183,7 +186,7 @@ function PosterAddPage() {
               />
             </div>
           </form>
-          <div>
+          <div className="gap-5">
 
           <button
             className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
