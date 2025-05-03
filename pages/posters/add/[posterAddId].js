@@ -17,17 +17,17 @@ function PosterAddPage() {
   const { data, isLoading } = useGetData(`/posters/details/${posterAddId}`);
   const [showModal, setShowModal] = useState(false);
   const [selectedLink, setSelectedLink] = useState("");
-  
+
   // const { username, password, posterId, links, details } = data
   //   ? data?.data?.data
   //   : "";
 
   const { _doc, details } = data ? data?.data?.data : "";
-  
-  const { username, password, posterId, links } = _doc ? _doc : "";
-  console.log("poster adminId", adminId, posterAddId, posterId);
 
-  console.log("poster data _doc:", _doc);
+  const { username, password, posterId, links } = _doc ? _doc : "";
+  console.log("adminId", adminId, 'posterAddId', posterAddId, 'posterId', posterId);
+
+//   console.log("poster data _doc:", _doc);
   // console.log("poster id", posterId);
   const handleAddClick = (link) => {
     setSelectedLink(link);
@@ -48,18 +48,20 @@ function PosterAddPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send the POST request (optional if handled in parent)
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add/cashapp/name/${adminId}/${posterId}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/add/cashapp/name/${adminId}/${posterId}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await res.json();
       console.log("Response:", result);
-      onSubmit?.(result); // call parent handler if provided
+      //   onSubmit?.(result); // call parent handler if provided
     } catch (err) {
-      console.error("Error submitting form:", err);
+      console.log("Error submitting form:", err);
     }
   };
 
@@ -103,7 +105,7 @@ function PosterAddPage() {
                 <div className="mt-3 space-y-3">
                   {links &&
                     links?.map((link, i) => (
-                      <div className="flex gap-5 items-center">
+                      <div className="flex gap-5 items-center flex-wrap">
                         <p key={i}>{link}</p>
                         <button
                           className="bg-green-600 text-xs text-white font-semibold px-2 py-1 rounded"
