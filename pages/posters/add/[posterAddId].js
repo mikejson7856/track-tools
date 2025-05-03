@@ -38,7 +38,7 @@ function PosterAddPage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -133,58 +133,58 @@ function PosterAddPage() {
         <h2 className="text-xl font-bold mb-4">Add Link</h2>
         <p className="text-sm text-gray-700">Are you sure you want to add:</p>
         <p className="text-blue-600 break-all mt-2">{selectedLink}</p>
-        <div className="mt-6 flex justify-end gap-3">
-        <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-sm font-semibold">Link</label>
-        <input
-          type="text"
-          name="link"
-          value={formData.link}
-          onChange={handleChange}
-          className="w-full border px-3 py-2 rounded"
-          required
-        />
-      </div>
+        <div className="mt-6 flex flex-col justify-center items-center gap-3">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-sm font-semibold">Link</label>
+              <input
+                type="text"
+                name="link"
+                value={formData.link}
+                onChange={handleChange}
+                className="w-full border px-3 py-2 rounded"
+                required
+              />
+            </div>
 
-      <div>
-        <label className="block text-sm font-semibold">Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full border px-3 py-2 rounded"
-          required
-        />
-      </div>
+            <div>
+              <label className="block text-sm font-semibold">Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full border px-3 py-2 rounded"
+                required
+              />
+            </div>
 
-      <div>
-        <label className="block text-sm font-semibold">Amount ($)</label>
-        <input
-          type="number"
-          name="amount"
-          value={formData.amount}
-          onChange={handleChange}
-          className="w-full border px-3 py-2 rounded"
-          required
-        />
-      </div>
+            <div>
+              <label className="block text-sm font-semibold">Amount ($)</label>
+              <input
+                type="number"
+                name="amount"
+                value={formData.amount}
+                onChange={handleChange}
+                className="w-full border px-3 py-2 rounded"
+                required
+              />
+            </div>
 
-      <div>
-        <label className="block text-sm font-semibold">CashTag</label>
-        <input
-          type="text"
-          name="cashTag"
-          value={formData.cashTag}
-          onChange={handleChange}
-          className="w-full border px-3 py-2 rounded"
-          required
-        />
-      </div>
+            <div>
+              <label className="block text-sm font-semibold">CashTag</label>
+              <input
+                type="text"
+                name="cashTag"
+                value={formData.cashTag}
+                onChange={handleChange}
+                className="w-full border px-3 py-2 rounded"
+                required
+              />
+            </div>
+          </form>
+          <div>
 
-
-    </form>
           <button
             className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
             onClick={() => setShowModal(false)}
@@ -201,6 +201,8 @@ function PosterAddPage() {
           >
             Confirm
           </button>
+          </div>
+
         </div>
       </Modal>
     </div>
