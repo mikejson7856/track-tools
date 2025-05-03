@@ -55,7 +55,7 @@ function PosterAddPage() {
 
     try {
       const res = await fetch(
-        `https://mailhackbackend.vercel.app/add/cashapp/name/${adminId}/${posterId}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/add/cashapp/name/${adminId}/${posterId}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
