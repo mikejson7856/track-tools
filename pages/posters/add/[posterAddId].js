@@ -124,33 +124,34 @@ function PosterAddPage() {
                 <h4 className="text-xl text-black">Links:</h4>
                 <div className="mt-3 space-y-3">
                   {links &&
-                    links?.map((link, i) => (
-                      <div className="flex gap-5 items-center flex-wrap">
-                       
-                       {/* {
-                        link.split() === ''
-                       }  */}
-                       <p key={i}>{link}</p>
-                        <button
-                          className="bg-green-600 text-xs text-white font-semibold px-2 py-1 rounded"
-                          onClick={() => handleAddClick(link)}
-                        >
-                          Add
-                        </button>
-                        <button
-                          className="bg-slate-600 text-xs text-white font-semibold px-2 py-1 rounded"
-                          //   onClick={() => handleAddClick(link)}
-                        >
-                          EDIT
-                        </button>
-                        <button
-                          className="bg-red-600 text-xs text-white font-semibold px-2 py-1 rounded"
-                          //   onClick={() => handleAddClick(link)}
-                        >
-                          DELETE
-                        </button>
-                      </div>
-                    ))}
+                    links?.map(
+                      (link, i) =>
+                        link && 
+                        link.split("/")[0] ===
+                          "https://cash-app-pay-online.vercel.app" && (
+                          <div className="flex gap-5 items-center flex-wrap">
+                            <p key={i}>{link}</p>
+                            <button
+                              className="bg-green-600 text-xs text-white font-semibold px-2 py-1 rounded"
+                              onClick={() => handleAddClick(link)}
+                            >
+                              Add
+                            </button>
+                            <button
+                              className="bg-slate-600 text-xs text-white font-semibold px-2 py-1 rounded"
+                              //   onClick={() => handleAddClick(link)}
+                            >
+                              EDIT
+                            </button>
+                            <button
+                              className="bg-red-600 text-xs text-white font-semibold px-2 py-1 rounded"
+                              //   onClick={() => handleAddClick(link)}
+                            >
+                              DELETE
+                            </button>
+                          </div>
+                        )
+                    )}
                 </div>
               </div>
             </div>
