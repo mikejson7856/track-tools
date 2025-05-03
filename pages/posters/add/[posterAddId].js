@@ -126,7 +126,11 @@ function PosterAddPage() {
                   {links &&
                     links?.map((link, i) => (
                       <div className="flex gap-5 items-center flex-wrap">
-                        <p key={i}>{link}</p>
+                       
+                       {/* {
+                        link.split() === ''
+                       }  */}
+                       <p key={i}>{link}</p>
                         <button
                           className="bg-green-600 text-xs text-white font-semibold px-2 py-1 rounded"
                           onClick={() => handleAddClick(link)}
